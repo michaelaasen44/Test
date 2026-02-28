@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schmitty's eBay Deal Finder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">
+          <span class="logo">$</span>
+          Schmitty's Deal Finder
+        </h1>
+        <p class="subtitle">Snipe steals &amp; low-ball opportunities on eBay before anyone else</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="search-section">
+        <form class="search-form" id="searchForm">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="iPhone 15, Air Jordans, vintage Rolex..."
+              required
+              minlength="2"
+              autocomplete="off"
+            />
+            <button type="submit" class="search-btn" id="searchBtn">
+              <span class="btn-text">Find Deals</span>
+              <span class="btn-icon" aria-hidden="true">&#128269;</span>
+            </button>
+          </div>
+
+          <div class="filters">
+            <span class="filters-label">Hunt for:</span>
+            <label class="chip">
+              <input type="checkbox" name="types" value="bestOffer" checked />
+              <span>&#128172; Best Offer</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="types" value="endingSoon" checked />
+              <span>&#9200; Ending Soon</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="types" value="belowAverage" checked />
+              <span>&#128201; Below Average</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" name="types" value="misspelled" checked />
+              <span>&#9999; Misspelled</span>
+            </label>
+          </div>
+        </form>
+      </div>
+
+      <div id="statusBar" class="status-bar hidden"></div>
+
+      <div id="results">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">&#128722;</div>
+          <h2>Ready to find deals</h2>
+          <p>Search any item and we'll score every listing across four deal signals — Best Offer, low-bid auctions ending soon, underpriced listings, and misspelled titles that fewer buyers ever find.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
