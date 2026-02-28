@@ -1,0 +1,2 @@
+git remote add github <https://github.com/michaelaasen44/ebay-deal-finder.git>
+git push github claude/ebay-deal-finder-uymsV:main
