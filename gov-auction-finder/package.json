@@ -1,7 +1,7 @@
 {
-  "name": "schmittys-ebay-deal-finder",
+  "name": "gov-auction-finder",
   "version": "1.0.0",
-  "description": "Find eBay steals and low-ball opportunities",
+  "description": "STL-area government surplus auctions — federal & local",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

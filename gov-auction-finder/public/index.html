@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schmitty's Gov Auction Finder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">
+          <span class="logo">&#127963;</span>
+          Gov Auction Finder
+        </h1>
+        <p class="subtitle">STL-area government surplus auctions — federal &amp; local</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="search-section">
+        <form class="search-form" id="govSearchForm">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="govSearchInput"
+              class="search-input"
+              placeholder="truck, generator, office furniture... (leave blank for all)"
+              autocomplete="off"
+            />
+            <button type="submit" class="search-btn" id="govSearchBtn">
+              <span class="btn-text">Find Auctions</span>
+              <span class="btn-icon" aria-hidden="true">&#127963;</span>
+            </button>
+          </div>
+
+          <div class="filters">
+            <span class="filters-label">States (6-hr radius of STL):</span>
+            <label class="chip"><input type="checkbox" name="govState" value="MO" checked /><span>MO</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="IL" checked /><span>IL</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="KY" checked /><span>KY</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="IN" checked /><span>IN</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="TN" checked /><span>TN</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="AR" checked /><span>AR</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="KS" checked /><span>KS</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="IA" checked /><span>IA</span></label>
+            <label class="chip"><input type="checkbox" name="govState" value="OK" checked /><span>OK</span></label>
+          </div>
+        </form>
+
+        <p class="gov-sources-note">
+          &#128204; Searches <strong>GSA Auctions</strong> (federal surplus) &amp; <strong>GovDeals</strong> (local government surplus) simultaneously
+        </p>
+      </div>
+
+      <div id="govStatusBar" class="status-bar hidden"></div>
+
+      <div id="govResults">
+        <div class="empty-state" id="govEmptyState">
+          <div class="empty-icon">&#127963;</div>
+          <h2>Find government surplus deals near STL</h2>
+          <p>Searches federal (GSA) and local government (GovDeals) auctions across MO, IL, KY, IN, TN, AR, KS, IA, and OK — all within a 6-hour drive of St. Louis.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

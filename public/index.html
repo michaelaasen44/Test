@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schmitty's eBay Deal Finder</title>
+  <title>Schmitty's Deal Finder</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -14,61 +14,119 @@
           <span class="logo">$</span>
           Schmitty's Deal Finder
         </h1>
-        <p class="subtitle">Snipe steals &amp; low-ball opportunities on eBay before anyone else</p>
+        <p class="subtitle">eBay steals &amp; STL-area government surplus auctions</p>
       </div>
     </header>
 
-    <main class="main">
-      <div class="search-section">
-        <form class="search-form" id="searchForm">
-          <div class="search-bar">
-            <input
-              type="text"
-              id="searchInput"
-              class="search-input"
-              placeholder="iPhone 15, Air Jordans, vintage Rolex..."
-              required
-              minlength="2"
-              autocomplete="off"
-            />
-            <button type="submit" class="search-btn" id="searchBtn">
-              <span class="btn-text">Find Deals</span>
-              <span class="btn-icon" aria-hidden="true">&#128269;</span>
-            </button>
-          </div>
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="ebay">&#128722; eBay Deals</button>
+      <button class="tab-btn" data-tab="gov">&#127963; Gov Auctions</button>
+    </nav>
 
-          <div class="filters">
-            <span class="filters-label">Hunt for:</span>
-            <label class="chip">
-              <input type="checkbox" name="types" value="bestOffer" checked />
-              <span>&#128172; Best Offer</span>
-            </label>
-            <label class="chip">
-              <input type="checkbox" name="types" value="endingSoon" checked />
-              <span>&#9200; Ending Soon</span>
-            </label>
-            <label class="chip">
-              <input type="checkbox" name="types" value="belowAverage" checked />
-              <span>&#128201; Below Average</span>
-            </label>
-            <label class="chip">
-              <input type="checkbox" name="types" value="misspelled" checked />
-              <span>&#9999; Misspelled</span>
-            </label>
-          </div>
-        </form>
-      </div>
+    <!-- eBay Deals Tab -->
+    <div id="tab-ebay" class="tab-panel">
+      <main class="main">
+        <div class="search-section">
+          <form class="search-form" id="searchForm">
+            <div class="search-bar">
+              <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="iPhone 15, Air Jordans, vintage Rolex..."
+                required
+                minlength="2"
+                autocomplete="off"
+              />
+              <button type="submit" class="search-btn" id="searchBtn">
+                <span class="btn-text">Find Deals</span>
+                <span class="btn-icon" aria-hidden="true">&#128269;</span>
+              </button>
+            </div>
 
-      <div id="statusBar" class="status-bar hidden"></div>
-
-      <div id="results">
-        <div class="empty-state" id="emptyState">
-          <div class="empty-icon">&#128722;</div>
-          <h2>Ready to find deals</h2>
-          <p>Search any item and we'll score every listing across four deal signals — Best Offer, low-bid auctions ending soon, underpriced listings, and misspelled titles that fewer buyers ever find.</p>
+            <div class="filters">
+              <span class="filters-label">Hunt for:</span>
+              <label class="chip">
+                <input type="checkbox" name="types" value="bestOffer" checked />
+                <span>&#128172; Best Offer</span>
+              </label>
+              <label class="chip">
+                <input type="checkbox" name="types" value="endingSoon" checked />
+                <span>&#9200; Ending Soon</span>
+              </label>
+              <label class="chip">
+                <input type="checkbox" name="types" value="belowAverage" checked />
+                <span>&#128201; Below Average</span>
+              </label>
+              <label class="chip">
+                <input type="checkbox" name="types" value="misspelled" checked />
+                <span>&#9999; Misspelled</span>
+              </label>
+            </div>
+          </form>
         </div>
-      </div>
-    </main>
+
+        <div id="statusBar" class="status-bar hidden"></div>
+
+        <div id="results">
+          <div class="empty-state" id="emptyState">
+            <div class="empty-icon">&#128722;</div>
+            <h2>Ready to find deals</h2>
+            <p>Search any item and we'll score every listing across four deal signals — Best Offer, low-bid auctions ending soon, underpriced listings, and misspelled titles that fewer buyers ever find.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Gov Auctions Tab -->
+    <div id="tab-gov" class="tab-panel hidden">
+      <main class="main">
+        <div class="search-section">
+          <form class="search-form" id="govSearchForm">
+            <div class="search-bar">
+              <input
+                type="text"
+                id="govSearchInput"
+                class="search-input"
+                placeholder="truck, generator, office furniture... (leave blank for all)"
+                autocomplete="off"
+              />
+              <button type="submit" class="search-btn" id="govSearchBtn">
+                <span class="btn-text">Find Auctions</span>
+                <span class="btn-icon" aria-hidden="true">&#127963;</span>
+              </button>
+            </div>
+
+            <div class="filters">
+              <span class="filters-label">States (6-hr radius of STL):</span>
+              <label class="chip"><input type="checkbox" name="govState" value="MO" checked /><span>MO</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="IL" checked /><span>IL</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="KY" checked /><span>KY</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="IN" checked /><span>IN</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="TN" checked /><span>TN</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="AR" checked /><span>AR</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="KS" checked /><span>KS</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="IA" checked /><span>IA</span></label>
+              <label class="chip"><input type="checkbox" name="govState" value="OK" checked /><span>OK</span></label>
+            </div>
+          </form>
+
+          <p class="gov-sources-note">
+            &#128204; Searches <strong>GSA Auctions</strong> (federal surplus) &amp; <strong>GovDeals</strong> (local government surplus) simultaneously
+          </p>
+        </div>
+
+        <div id="govStatusBar" class="status-bar hidden"></div>
+
+        <div id="govResults">
+          <div class="empty-state" id="govEmptyState">
+            <div class="empty-icon">&#127963;</div>
+            <h2>Find government surplus deals near STL</h2>
+            <p>Searches federal (GSA) and local government (GovDeals) auctions across MO, IL, KY, IN, TN, AR, KS, IA, and OK — all within a 6-hour drive of St. Louis.</p>
+          </div>
+        </div>
+      </main>
+    </div>
   </div>
 
   <script src="app.js"></script>

@@ -12,7 +12,6 @@
   --blue:        #4a9eff;
   --orange:      #ff9500;
   --red:         #ff4757;
-  --purple:      #a855f7;
 }
 
 body {
@@ -28,8 +27,7 @@ body {
   text-align: center;
   padding: 3rem 1.5rem 2.5rem;
   border-bottom: 1px solid var(--border);
-  background: radial-gradient(ellipse 80% 120% at 50% -20%, rgba(0,210,106,.06) 0%, transparent 70%);
-  position: relative;
+  background: radial-gradient(ellipse 80% 120% at 50% -20%, rgba(74,158,255,.06) 0%, transparent 70%);
 }
 
 .title {
@@ -40,7 +38,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: .6rem;
-  background: linear-gradient(135deg, #00d26a 0%, #4a9eff 100%);
+  background: linear-gradient(135deg, #4a9eff 0%, #00d26a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -52,12 +50,10 @@ body {
   justify-content: center;
   width: 2.2rem;
   height: 2.2rem;
-  background: linear-gradient(135deg, #00d26a, #00a854);
+  background: linear-gradient(135deg, #4a9eff, #2276cc);
   border-radius: 10px;
   font-size: 1.3rem;
-  font-weight: 900;
-  -webkit-text-fill-color: #000;
-  color: #000;
+  -webkit-text-fill-color: initial;
   flex-shrink: 0;
 }
 
@@ -98,19 +94,19 @@ body {
 .search-input::placeholder { color: var(--muted); }
 
 .search-input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px var(--green-glow);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(74,158,255,.12);
 }
 
 .search-btn {
   display: flex;
   align-items: center;
   gap: .5rem;
-  background: linear-gradient(135deg, #00d26a, #00a854);
+  background: linear-gradient(135deg, #4a9eff, #2276cc);
   border: none;
   border-radius: 12px;
   padding: .875rem 1.75rem;
-  color: #000;
+  color: #fff;
   font-size: 1rem;
   font-weight: 800;
   cursor: pointer;
@@ -120,7 +116,7 @@ body {
 
 .search-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0,210,106,.35);
+  box-shadow: 0 6px 24px rgba(74,158,255,.35);
 }
 
 .search-btn:active:not(:disabled) { transform: translateY(0); }
@@ -157,9 +153,9 @@ body {
 }
 
 .chip input:checked + span {
-  background: var(--green-glow);
-  border-color: var(--green);
-  color: var(--green);
+  background: rgba(74,158,255,.12);
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 .chip:hover span { border-color: #2a3a55; }
@@ -188,9 +184,9 @@ body {
 }
 
 .status-bar.success {
-  border-color: rgba(0,210,106,.25);
-  color: var(--green);
-  background: var(--green-glow);
+  border-color: rgba(74,158,255,.25);
+  color: var(--blue);
+  background: rgba(74,158,255,.07);
 }
 
 .hidden { display: none !important; }
@@ -200,7 +196,7 @@ body {
   width: 16px;
   height: 16px;
   border: 2px solid var(--border);
-  border-top-color: var(--green);
+  border-top-color: var(--blue);
   border-radius: 50%;
   animation: spin .7s linear infinite;
   flex-shrink: 0;
@@ -232,51 +228,6 @@ body {
   border-color: #253450;
 }
 
-/* Image */
-.card-img {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  background: #0c1322;
-  overflow: hidden;
-}
-
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: .5rem;
-}
-
-.no-image {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
-  color: var(--border);
-}
-
-/* Score badge */
-.score-badge {
-  position: absolute;
-  top: .6rem;
-  right: .6rem;
-  background: rgba(8,12,20,.88);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 8px;
-  padding: .25rem .6rem;
-  font-size: .8rem;
-  font-weight: 800;
-  letter-spacing: .5px;
-}
-
-.score-badge.high   { color: var(--green);  border-color: rgba(0,210,106,.3); }
-.score-badge.medium { color: var(--orange); border-color: rgba(255,149,0,.3); }
-.score-badge.low    { color: var(--muted);  }
-
-/* Card body */
 .card-body {
   padding: 1rem;
   flex: 1;
@@ -309,10 +260,20 @@ body {
 .card-avg {
   font-size: .8rem;
   color: var(--muted);
-  text-decoration: line-through;
 }
 
-/* Tags */
+.card-price-none {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.card-location {
+  font-size: .8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
 .card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -328,20 +289,11 @@ body {
   letter-spacing: .2px;
 }
 
-.tag.bestOffer    { color: var(--blue);   border-color: rgba(74,158,255,.3);  background: rgba(74,158,255,.07);  }
-.tag.endingSoon   { color: var(--red);    border-color: rgba(255,71,87,.3);   background: rgba(255,71,87,.07);   }
-.tag.endingSoon.fewBids { color: var(--orange); border-color: rgba(255,149,0,.3); background: rgba(255,149,0,.07); }
-.tag.belowAverage { color: var(--green);  border-color: rgba(0,210,106,.3);   background: rgba(0,210,106,.07);   }
-.tag.misspelled   { color: var(--purple); border-color: rgba(168,85,247,.3);  background: rgba(168,85,247,.07);  }
+.tag.gsa      { color: var(--blue);   border-color: rgba(74,158,255,.3);  background: rgba(74,158,255,.07);  }
+.tag.govdeals { color: var(--orange); border-color: rgba(255,149,0,.3);   background: rgba(255,149,0,.07);   }
+.tag.endingSoon { color: var(--red);  border-color: rgba(255,71,87,.3);   background: rgba(255,71,87,.07);   }
+.tag.category { color: var(--green);  border-color: rgba(0,210,106,.3);   background: rgba(0,210,106,.07);   }
 
-/* Seller meta */
-.card-meta {
-  font-size: .75rem;
-  color: var(--muted);
-  margin-top: auto;
-}
-
-/* Card footer */
 .card-footer {
   padding: .75rem 1rem;
   border-top: 1px solid var(--border);
@@ -363,9 +315,27 @@ body {
 }
 
 .view-btn:hover {
-  background: var(--green-glow);
-  border-color: var(--green);
-  color: var(--green);
+  background: rgba(74,158,255,.07);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ── Gov auction specifics ────────────────────────── */
+.gov-card { min-height: 200px; }
+
+.gov-source-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: .25rem;
+}
+
+.gov-sources-note {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-top: .75rem;
+  line-height: 1.5;
 }
 
 /* ── Empty / no-results states ───────────────────── */
@@ -392,80 +362,8 @@ body {
   line-height: 1.65;
 }
 
-/* ── Tab navigation ───────────────────────────────── */
-.tab-nav {
-  display: flex;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.tab-btn {
-  flex: 1;
-  max-width: 220px;
-  padding: .875rem 1.5rem;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: var(--muted);
-  font-size: .9rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: color .15s, border-color .15s;
-  letter-spacing: .2px;
-}
-
-.tab-btn:hover { color: var(--text); }
-
-.tab-btn.active {
-  color: var(--green);
-  border-bottom-color: var(--green);
-}
-
-/* ── Tab panels ───────────────────────────────────── */
-.tab-panel { display: block; }
-.tab-panel.hidden { display: none !important; }
-
-/* ── Gov auction card ─────────────────────────────── */
-.gov-card { min-height: 200px; }
-
-.gov-source-row {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  flex-wrap: wrap;
-  margin-bottom: .25rem;
-}
-
-.card-location {
-  font-size: .8rem;
-  color: var(--muted);
-  margin: 0;
-}
-
-.card-price-none {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--muted);
-}
-
-/* Source tags */
-.tag.gsa      { color: var(--blue);   border-color: rgba(74,158,255,.3);  background: rgba(74,158,255,.07);  }
-.tag.govdeals { color: var(--orange); border-color: rgba(255,149,0,.3);   background: rgba(255,149,0,.07);   }
-
-/* Gov auctions source note */
-.gov-sources-note {
-  font-size: .8rem;
-  color: var(--muted);
-  margin-top: .75rem;
-  line-height: 1.5;
-}
-
 /* ── Responsive ──────────────────────────────────── */
 @media (max-width: 560px) {
   .search-bar { flex-direction: column; }
   .search-btn { justify-content: center; }
-  .tab-btn { max-width: none; padding: .75rem .5rem; font-size: .8rem; }
 }
