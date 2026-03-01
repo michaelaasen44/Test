@@ -1,0 +1,369 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #080c14;
+  --bg-card:     #101624;
+  --bg-card-hov: #151d2e;
+  --border:      #1c2840;
+  --text:        #dde3f0;
+  --muted:       #5a6a88;
+  --green:       #00d26a;
+  --green-glow:  rgba(0,210,106,.12);
+  --blue:        #4a9eff;
+  --orange:      #ff9500;
+  --red:         #ff4757;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── Header ─────────────────────────────────────── */
+.header {
+  text-align: center;
+  padding: 3rem 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(ellipse 80% 120% at 50% -20%, rgba(74,158,255,.06) 0%, transparent 70%);
+}
+
+.title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  background: linear-gradient(135deg, #4a9eff 0%, #00d26a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: linear-gradient(135deg, #4a9eff, #2276cc);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  -webkit-text-fill-color: initial;
+  flex-shrink: 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: .5rem;
+  font-size: 1rem;
+}
+
+/* ── Layout ──────────────────────────────────────── */
+.main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+/* ── Search ──────────────────────────────────────── */
+.search-section { margin-bottom: 1.5rem; }
+
+.search-bar {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: .875rem 1.25rem;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.search-input::placeholder { color: var(--muted); }
+
+.search-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(74,158,255,.12);
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: linear-gradient(135deg, #4a9eff, #2276cc);
+  border: none;
+  border-radius: 12px;
+  padding: .875rem 1.75rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.search-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(74,158,255,.35);
+}
+
+.search-btn:active:not(:disabled) { transform: translateY(0); }
+.search-btn:disabled { opacity: .55; cursor: not-allowed; }
+
+/* ── Filter chips ─────────────────────────────────── */
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .625rem;
+}
+
+.filters-label {
+  color: var(--muted);
+  font-size: .85rem;
+  margin-right: .25rem;
+}
+
+.chip { cursor: pointer; }
+.chip input { display: none; }
+
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .35rem .9rem;
+  font-size: .85rem;
+  user-select: none;
+  transition: border-color .15s, background .15s, color .15s;
+}
+
+.chip input:checked + span {
+  background: rgba(74,158,255,.12);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.chip:hover span { border-color: #2a3a55; }
+
+/* ── Status bar ───────────────────────────────────── */
+.status-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: .875rem;
+  color: var(--muted);
+}
+
+.status-bar.loading {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.status-bar.error {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(255,71,87,.05);
+}
+
+.status-bar.success {
+  border-color: rgba(74,158,255,.25);
+  color: var(--blue);
+  background: rgba(74,158,255,.07);
+}
+
+.hidden { display: none !important; }
+
+/* ── Spinner ─────────────────────────────────────── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Results grid ─────────────────────────────────── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Deal card ────────────────────────────────────── */
+.deal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.deal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  border-color: #253450;
+}
+
+.card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+
+.card-title {
+  font-size: .9rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+}
+
+.card-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--green);
+}
+
+.card-avg {
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.card-price-none {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.card-location {
+  font-size: .8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .375rem;
+}
+
+.tag {
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .22rem .65rem;
+  border-radius: 999px;
+  border: 1px solid;
+  letter-spacing: .2px;
+}
+
+.tag.gsa      { color: var(--blue);   border-color: rgba(74,158,255,.3);  background: rgba(74,158,255,.07);  }
+.tag.govdeals { color: var(--orange); border-color: rgba(255,149,0,.3);   background: rgba(255,149,0,.07);   }
+.tag.endingSoon { color: var(--red);  border-color: rgba(255,71,87,.3);   background: rgba(255,71,87,.07);   }
+.tag.category { color: var(--green);  border-color: rgba(0,210,106,.3);   background: rgba(0,210,106,.07);   }
+
+.card-footer {
+  padding: .75rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.view-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem;
+  color: var(--text);
+  font-size: .875rem;
+  font-weight: 700;
+  transition: background .15s, border-color .15s, color .15s;
+}
+
+.view-btn:hover {
+  background: rgba(74,158,255,.07);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ── Gov auction specifics ────────────────────────── */
+.gov-card { min-height: 200px; }
+
+.gov-source-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: .25rem;
+}
+
+.gov-sources-note {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-top: .75rem;
+  line-height: 1.5;
+}
+
+/* ── Empty / no-results states ───────────────────── */
+.empty-state,
+.no-results {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--muted);
+}
+
+.empty-icon { font-size: 4rem; margin-bottom: 1.25rem; }
+
+.empty-state h2,
+.no-results h2 {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: .5rem;
+}
+
+.empty-state p,
+.no-results p {
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 560px) {
+  .search-bar { flex-direction: column; }
+  .search-btn { justify-content: center; }
+}
