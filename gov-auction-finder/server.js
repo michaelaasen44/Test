@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const { findGovAuctions, STL_RADIUS_STATES } = require('./services/govAuctions');
+const { findGovAuctions, debugSources, STL_RADIUS_STATES } = require('./services/govAuctions');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +33,18 @@ app.get('/api/gov-auctions', async (req, res) => {
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
+});
+
+// Hit this to diagnose why results are empty:
+// /api/debug?q=truck&state=MO
+app.get('/api/debug', async (req, res) => {
+  const { q = '', state = 'MO' } = req.query;
+  try {
+    const result = await debugSources(q, state.toUpperCase());
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 app.listen(PORT, () => {
