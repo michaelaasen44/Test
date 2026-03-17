@@ -11,6 +11,7 @@ export interface Book {
   review?: string;
   dateRead?: string;
   pages?: number;
+  instagramPostUrl?: string; // link to the bookstagram post for this book
 }
 
 export const books: Book[] = [
@@ -26,6 +27,7 @@ export const books: Book[] = [
       "An utterly enchanting story woven in black and white — and the occasional flash of red. The prose is as magical as the circus itself. I read it in one sitting wrapped in a blanket with a cup of tea and I have zero regrets.",
     dateRead: "2024-11-03",
     pages: 387,
+    // instagramPostUrl: "https://www.instagram.com/p/YOUR_POST_ID",
   },
   {
     id: 2,
@@ -110,4 +112,8 @@ export function getByStatus(status: ReadStatus): Book[] {
 
 export function getReviewed(): Book[] {
   return books.filter((b) => b.status === "read" && b.review);
+}
+
+export function getBooksWithInstagram(): Book[] {
+  return books.filter((b) => b.instagramPostUrl);
 }

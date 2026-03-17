@@ -49,6 +49,9 @@ export default function RootLayout({
               <Link href="/tracker" style={{ color: "var(--text-muted)" }}>
                 My Books
               </Link>
+              <Link href="/instagram" style={{ color: "var(--text-muted)" }}>
+                &lsquo;Gram
+              </Link>
             </div>
           </div>
         </nav>

@@ -150,6 +150,45 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "2.5rem 0" }} />
+
+      {/* Instagram CTA */}
+      <section style={{ textAlign: "center", padding: "1rem 0 0.5rem" }}>
+        <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", marginBottom: "0.75rem" }}>
+          Follow along on Instagram for book photos &amp; chaotic opinions
+        </p>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <a
+            href="https://www.instagram.com/mychaoticshelf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              backgroundColor: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: 8,
+              padding: "0.6rem 1.25rem",
+              color: "var(--accent)",
+              fontSize: "0.9rem",
+            }}
+          >
+            @mychaoticshelf ↗
+          </a>
+          <Link
+            href="/instagram"
+            style={{
+              backgroundColor: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: 8,
+              padding: "0.6rem 1.25rem",
+              color: "var(--text-muted)",
+              fontSize: "0.9rem",
+            }}
+          >
+            View posts on site →
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
